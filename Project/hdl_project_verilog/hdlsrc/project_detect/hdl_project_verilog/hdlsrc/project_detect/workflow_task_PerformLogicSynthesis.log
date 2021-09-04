@@ -1,0 +1,76 @@
+Task "Perform Logic Synthesis" unsuccessful. See log for details.
+Generated logfile: 
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.4.0 Build 72 12/14/2020 SC Pro Edition
+    Info: Copyright (C) 2020  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details, at
+    Info: https://fpgasoftware.intel.com/eula.
+    Info: Processing started: Sat Feb 13 17:20:29 2021
+    Info: System process ID: 2084
+Info: Command: quartus_sta -t Pulse_Detector_Intel_Quartus_Pro_run.tcl
+### Open existing Intel Quartus Pro 20.4.0 project hdl_project_verilog\qpro_prj\Pulse_Detector_qpro.qpf
+### Running Synthesis in Intel Quartus Pro 20.4.0 ...
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 20.4.0 Build 72 12/14/2020 SC Pro Edition
+    Info: Processing started: Sat Feb 13 17:20:30 2021
+    Info: System process ID: 6360
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off Pulse_Detector_qpro -c Pulse_Detector_qpro
+Info: qis_default_flow_script.tcl version: #2
+Info: Initializing Synthesis...
+Info: Project = "Pulse_Detector_qpro"
+Info: Revision = "Pulse_Detector_qpro"
+Info: Analyzing source files
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/Compute_Power.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/MATLAB_Function.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/Local_Peak.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/FilterCoef.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/FilterCoef_block.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/FilterCoef_block1.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/FilterTapSystolicWvldin.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/subFilter.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/FilterBank.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/Discrete_FIR_Filter_HDL_Optimized.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/Pulse_Detector.v - no such file exists
+Warning (16124): Can't analyze file ../hdlsrc/project_detect/clock_constraint.sdc - no such file exists
+Info: Elaborating from top-level entity "Pulse_Detector"
+Error (16368): Top-level design entity "Pulse_Detector" is undefined
+Error (16186): Can't elaborate top-level user hierarchy
+Error: Flow failed: 
+Error: Quartus Prime Synthesis was unsuccessful. 3 errors, 12 warnings
+    Error: Peak virtual memory: 301 megabytes
+    Error: Processing ended: Sat Feb 13 17:20:34 2021
+    Error: Elapsed time: 00:00:04
+    Error: System process ID: 6360
+Error (23035): Tcl error: ERROR: Error(s) found while running an executable. See report file(s) for error message(s). Message log indicates which executable was run last.
+
+    while executing
+"execute_module -tool map"
+    (file "Pulse_Detector_Intel_Quartus_Pro_run.tcl" line 21)
+------------------------------------------------
+ERROR: Error(s) found while running an executable. See report file(s) for error message(s). Message log indicates which executable was run last.
+
+    while executing
+"execute_module -tool map"
+    (file "Pulse_Detector_Intel_Quartus_Pro_run.tcl" line 21)
+------------------------------------------------
+Error (23031): Evaluation of Tcl script Pulse_Detector_Intel_Quartus_Pro_run.tcl unsuccessful
+Error: Quartus Prime Timing Analyzer was unsuccessful. 10 errors, 12 warnings
+    Error: Peak virtual memory: 296 megabytes
+    Error: Processing ended: Sat Feb 13 17:20:34 2021
+    Error: Elapsed time: 00:00:05
+    Error: System process ID: 2084
+
+Elapsed time is 6.451 seconds.

@@ -1,0 +1,15 @@
+n1 = 1.47;
+delta = 0.02;
+a = 40*10^-6;
+d = 2*a;
+y = 2*10^-6;
+theta = 3*3.14/180;
+n = 1;
+x = 2*acos(y/20) - y/a*sqrt(1 - (4/2*a)^2);
+etalat = 16*(n1/n)^2 * x / (3.14*(1+ (n1/n))^4);
+lb = log10(etalat);
+x1 = 1 - n*theta/(3.14*n1*sqrt(2*delta));
+etaang = 16*(n1/n)^2/(1+ (n1/n))^4*x1;
+la = log10(etaang);
+l = 10*(la+lb);
+fprintf("total insertion loss is %d db", l);

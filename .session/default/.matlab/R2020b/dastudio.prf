@@ -1,0 +1,34 @@
+#
+#DAStudio Preference File
+#
+
+
+[DAStudio DDG]
+DDGFontSize=10
+
+[GLUEEditorPreferences]
+FirstTimeScrollNotification=0
+SuggestActionsSearchNotification=0
+SuggestQuickInsertNotification=0
+
+[General]
+MatlabRelease=2020b
+
+[LibraryBrowser2]
+LBGeometry4Window=32 64 729 527
+LBListWidth=416
+LBRecentName0=simulink/Sinks/Scope
+LBRecentName1=simulink/Sources/Sine Wave
+LBScaleFactor=1
+LBSearch_MatchCase=0
+LBSearch_MatchWholeWord=0
+LBSearch_UseRegExp=0
+LBSortStyle=0
+LBTreePopupHeight=500
+LBTreePopupWidth=250
+LBTreeWidth=297
+LBUseCache=1
+
+[SLToolstrip]
+TSDisplay=0
+

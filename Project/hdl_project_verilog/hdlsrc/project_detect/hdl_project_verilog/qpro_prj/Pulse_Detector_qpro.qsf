@@ -1,0 +1,18 @@
+set_global_assignment -name TOP_LEVEL_ENTITY Pulse_Detector
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.4.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:19:54  FEBRUARY 13, 2021"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.4.0 Pro Edition"
+set_global_assignment -name FAMILY "Cyclone 10 GX"
+set_global_assignment -name DEVICE 10CX150YF672E5G
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/Compute_Power.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/MATLAB_Function.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/Local_Peak.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/FilterCoef.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/FilterCoef_block.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/FilterCoef_block1.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/FilterTapSystolicWvldin.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/subFilter.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/FilterBank.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/Discrete_FIR_Filter_HDL_Optimized.v
+set_global_assignment -name VERILOG_FILE ../hdlsrc/project_detect/Pulse_Detector.v
+set_global_assignment -name SDC_FILE ../hdlsrc/project_detect/clock_constraint.sdc

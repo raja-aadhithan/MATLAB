@@ -1,0 +1,174 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>fir</title><meta name="generator" content="MATLAB 9.9"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-02-17"><meta name="DC.source" content="fir.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">clc;<span class="comment">%clear console</span>
+clear;<span class="comment">%clear variables</span>
+close <span class="string">all</span>;<span class="comment">%close all figures</span>
+n = 20;<span class="comment">%order of filter</span>
+fp = 200;<span class="comment">%pass band frequency</span>
+fs = 600;<span class="comment">%stop band frequency</span>
+f = 2000;<span class="comment">%sampling frequency</span>
+wp = 2*(fp/f);<span class="comment">%pass band frequency in rads</span>
+ws = 2*(fs/f);<span class="comment">%stop band frequency in rads</span>
+window_1 = boxcar(n+1);<span class="comment">%rectangular window</span>
+window_2 = hamming(n+1);<span class="comment">%hamming windoe</span>
+window_3 = hanning(n+1);<span class="comment">%hanning window</span>
+window_4 = kaiser(n+1); <span class="comment">%kaiser window</span>
+
+<span class="comment">%attaching all the doubles to use in loop conveniently</span>
+y  = [window_1 ,window_2 ,window_3 ,window_4];
+
+<span class="comment">%to be used in titles</span>
+name = [<span class="string">"rectangular"</span>,<span class="string">"hamming"</span>,<span class="string">"hanning"</span>,<span class="string">"kaiser"</span>];
+
+<span class="comment">%ploting loops</span>
+<span class="keyword">for</span> i = 1:4
+    window = y(1:n+1,i);<span class="comment">%takes one window at a time</span>
+    t = [<span class="string">"high"</span>,<span class="string">"low"</span>,<span class="string">"bandpass"</span>,<span class="string">"stop"</span>];<span class="comment">%four different types of filter</span>
+
+    <span class="keyword">for</span> x = 1:length(t)
+        <span class="keyword">if</span> x &lt; 3
+            wn = wp;<span class="comment">%single frequency for high and low pass filters</span>
+        <span class="keyword">else</span>
+            wn = [wp,ws];<span class="comment">%two frequencies for band filters</span>
+        <span class="keyword">end</span>
+
+        b = fir1(n,wn,t(x),window);<span class="comment">%filter function</span>
+        [H,w] = freqz(b,1);<span class="comment">%transfer function</span>
+
+        figure (i)<span class="comment">%individual figures for each window</span>
+
+        subplot(4,2,2*x-1)
+        plot(w/pi,20*log(abs(H)));<span class="comment">%magnitude</span>
+        xlabel(<span class="string">'normalized frequency'</span>);
+        ylabel(<span class="string">'mag in db'</span>);
+        title (<span class="string">'mag response for '</span> + name(i) + <span class="string">' as '</span>+ t(x) +<span class="string">' pass filter '</span>);
+
+        subplot(4,2,2*x)
+        plot(w/pi,angle(H));<span class="comment">%phase</span>
+        xlabel(<span class="string">'normalized frequency'</span>);
+        ylabel(<span class="string">'angle'</span>);
+        title (<span class="string">'phase response for '</span> + name(i) +<span class="string">' as '</span>+ t(x) +<span class="string">' pass filter '</span>);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="fir_01.png" alt=""> <img vspace="5" hspace="5" src="fir_02.png" alt=""> <img vspace="5" hspace="5" src="fir_03.png" alt=""> <img vspace="5" hspace="5" src="fir_04.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clc;%clear console
+clear;%clear variables
+close all;%close all figures
+n = 20;%order of filter
+fp = 200;%pass band frequency
+fs = 600;%stop band frequency
+f = 2000;%sampling frequency
+wp = 2*(fp/f);%pass band frequency in rads
+ws = 2*(fs/f);%stop band frequency in rads
+window_1 = boxcar(n+1);%rectangular window
+window_2 = hamming(n+1);%hamming windoe
+window_3 = hanning(n+1);%hanning window
+window_4 = kaiser(n+1); %kaiser window
+
+%attaching all the doubles to use in loop conveniently 
+y  = [window_1 ,window_2 ,window_3 ,window_4]; 
+
+%to be used in titles
+name = ["rectangular","hamming","hanning","kaiser"];
+
+%ploting loops
+for i = 1:4
+    window = y(1:n+1,i);%takes one window at a time
+    t = ["high","low","bandpass","stop"];%four different types of filter
+    
+    for x = 1:length(t)
+        if x < 3
+            wn = wp;%single frequency for high and low pass filters
+        else
+            wn = [wp,ws];%two frequencies for band filters
+        end
+        
+        b = fir1(n,wn,t(x),window);%filter function
+        [H,w] = freqz(b,1);%transfer function
+        
+        figure (i)%individual figures for each window
+        
+        subplot(4,2,2*x-1)
+        plot(w/pi,20*log(abs(H)));%magnitude
+        xlabel('normalized frequency');
+        ylabel('mag in db');
+        title ('mag response for ' + name(i) + ' as '+ t(x) +' pass filter ');
+        
+        subplot(4,2,2*x)
+        plot(w/pi,angle(H));%phase
+        xlabel('normalized frequency');
+        ylabel('angle');
+        title ('phase response for ' + name(i) +' as '+ t(x) +' pass filter ');
+    end
+end
+
+##### SOURCE END #####
+--></body></html>

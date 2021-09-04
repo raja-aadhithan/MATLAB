@@ -1,0 +1,36 @@
+Synthesis report
+Sat Feb 13 15:19:22 2021
+Quartus Prime Version 20.4.0 Build 72 12/14/2020 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Synthesis Messages
+
+
+
++--------------------+
+; Synthesis Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Synthesis
+    Info: Version 20.4.0 Build 72 12/14/2020 SC Pro Edition
+    Info: Processing started: Sat Feb 13 15:19:19 2021
+    Info: System process ID: 9140
+Info: Command: quartus_syn --read_settings_files=on --write_settings_files=off Pulse_Detector_qpro -c Pulse_Detector_qpro
+Info: qis_default_flow_script.tcl version: #2
+Info: Initializing Synthesis...
+Info: Project = "Pulse_Detector_qpro"
+Info: Revision = "Pulse_Detector_qpro"
+Info: Analyzing source files
+Error (19273): Family Cyclone 10 GX is not installed
+Error: Flow failed: ERROR: Current design not found
+
+Error: Quartus Prime Synthesis was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 286 megabytes
+    Error: Processing ended: Sat Feb 13 15:19:22 2021
+    Error: Elapsed time: 00:00:03
+    Error: System process ID: 9140
+
+
